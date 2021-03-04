@@ -14,7 +14,7 @@ import (
 // go tool pprof bench.test prof.mem
 // go tool pprof -http=":5001" bench.test prof.cpu
 // go tool pprof -http=":5002" bench.test prof.mem
-// benchcmp prof ../opt_2/prof
+// benchcmp prof ../opt_3/prof
 func BenchmarkHandleProduct(b *testing.B) {
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
