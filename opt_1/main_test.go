@@ -8,8 +8,8 @@ import (
 	"testing"
 )
 
-var tempProducts map[string]*Product
-
+// var tempProducts map[string]*Product
+//
 // go test -cover -race -v
 //func TestMain(m *testing.M) {
 //	GenerateProduct()

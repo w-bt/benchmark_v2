@@ -8,7 +8,7 @@ import (
 	"github.com/go-redis/redis/v8"
 )
 
-var products map[string]Product
+var products map[string]*Product
 
 func init() {
 	rdb = redis.NewClient(&redis.Options{Addr: "localhost:6379"})
@@ -39,11 +39,9 @@ func handleProduct(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(`<font size="10">Product Code : ` + result.Code + ` Name :` + result.Name + `</font>`))
 }
 
-func findProduct(Products map[string]Product, code string) Product {
-	for _, item := range Products {
-		if code == item.Code {
-			return item
-		}
+func findProduct(Products map[string]*Product, code string) Product {
+	if v, ok := Products[code]; ok {
+		return *v
 	}
 
 	return Product{}
