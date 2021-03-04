@@ -4,14 +4,11 @@ import (
 	"log"
 	"net/http"
 	"regexp"
-
-	"github.com/go-redis/redis/v8"
 )
 
 var products map[string]Product
 
 func init() {
-	rdb = redis.NewClient(&redis.Options{Addr: "localhost:6379"})
 	GenerateProduct()
 }
 

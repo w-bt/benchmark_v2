@@ -6,7 +6,10 @@ import (
 	"regexp"
 )
 
-var products map[string]*Product
+var (
+	products  map[string]*Product
+	codeRegex = regexp.MustCompile(`^[A-Z]{2}[0-9]{2}$`)
+)
 
 func init() {
 	GenerateProduct()
@@ -20,7 +23,7 @@ func main() {
 
 func handleProduct(w http.ResponseWriter, r *http.Request) {
 	code := r.FormValue("code")
-	if match, _ := regexp.MatchString(`^[A-Z]{2}[0-9]{2}$`, code); !match {
+	if match := codeRegex.MatchString(code); !match {
 		http.Error(w, "code is invalid", http.StatusBadRequest)
 		return
 	}
