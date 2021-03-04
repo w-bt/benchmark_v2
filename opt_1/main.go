@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"regexp"
+	// _ "net/http/pprof"
 )
 
 var products map[string]*Product

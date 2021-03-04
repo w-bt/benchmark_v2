@@ -246,8 +246,8 @@ Showing top 10 nodes out of 34
 Detailed informations:
   - flat: the duration of direct operation inside the function (function call doesn't count as flat)
   - flat%: flat percentage `(flat/total flats)*100`
-  - sum%: sum of current flat% and previous flat%
-  - cum: cumulative duration for the function
+  - sum%: sum of current flat% and previous flat%, sum% could help you to identify the big rocks quickly
+  - cum: cumulative duration for the function, it is the value of the location plus all its descendants.
   - cum%: cumulative percentage `(cum/total cum)*100`
 
 Flat and Sum
@@ -327,6 +327,30 @@ ROUTINE ======================== github.com/w-bt/benchmark_v2/opt_1.findProduct 
 To see in UI form, use `web`
 
 ![cpu profile](./opt_1/pprof001.svg)
+
+#### Interpreting the Callgraph
+
+Node Color:
+-  large positive cum values are red.
+-  cum values close to zero are grey.
+
+Node Font Size:
+-  larger font size means larger absolute flat values.
+-  smaller font size means smaller absolute flat values.
+
+Edge Weight:
+-  thicker edges indicate more resources were used along that path.
+-  thinner edges indicate fewer resources were used along that path.
+
+Edge Color:
+-  large positive values are red.
+-  values close to zero are grey.
+
+Dashed Edges: some locations between the two connected locations were removed.
+
+Solid Edges: one location directly calls the other.
+
+"(inline)" Edge Marker: the call has been inlined into the caller.
 
 ### Memory Profiling
 
