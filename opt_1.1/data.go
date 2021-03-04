@@ -2,11 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/go-redis/redis/v8"
-)
-
-var (
-	rdb *redis.Client
 )
 
 func GenerateProduct() {

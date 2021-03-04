@@ -1,5 +1,3 @@
-module github.com/w-bt/benchmark
+module github.com/w-bt/benchmark/opt_3
 
 go 1.14
-
-require github.com/go-redis/redis/v8 v8.6.0
