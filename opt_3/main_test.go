@@ -14,7 +14,7 @@ import (
 // go tool pprof bench.test prof.mem
 // go tool pprof -http=":5001" bench.test prof.cpu
 // go tool pprof -http=":5002" bench.test prof.mem
-// benchstat prof.txt ../opt_2/prof.txt
+// benchcmp prof.txt ../opt_2/prof.txt
 func BenchmarkHandleProduct(b *testing.B) {
 	b.ReportAllocs()
 	r, _ := http.ReadRequest(bufio.NewReader(strings.NewReader("GET /product?code=ZZ99 HTTP/1.0\r\n\r\n")))
